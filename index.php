@@ -13,8 +13,8 @@ $_CONFIG['appName'] = "musicco";
 
 // The application version. This is used for sending as part of the user-agent string
 // as part of fair use of external services APIs.
-// Default: $_CONFIG['appVersion'] = "2.0.1";
-$_CONFIG['appVersion'] = "2.0.1";
+// Default: $_CONFIG['appVersion'] = "2.1.0";
+$_CONFIG['appVersion'] = "2.1.0";
 
 // The database version compatible with this version. This is for information purposes only, since
 // no backwards compatibility really exists
@@ -985,6 +985,10 @@ class Musicco {
 			}
 
 			function setCurrentTime(time) {
+				var castPlayer = new cast.framework.RemotePlayer();
+				var castPlayerController = new cast.framework.RemotePlayerController(castPlayer);
+				castPlayer.currentTime = time;
+				castPlayerController.seek();
 				player.currentTime = time;
 			}
 
